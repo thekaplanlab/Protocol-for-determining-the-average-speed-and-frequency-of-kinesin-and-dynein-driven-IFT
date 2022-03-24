@@ -5,7 +5,7 @@ library(ggplot2)
 library(colorspace)
 
 
-data<- read.csv("/Users/oktay/Desktop/Manuscripts/STAR_protocol_IFT/Code/frequency.csv", sep = ",", header = T)
+data<- read.csv("/Users/Desktop/Manuscripts/STAR_protocol_IFT/Code/frequency.csv", sep = ",", header = T)
 
 
 data = rename(data, c("WT - Anterograde"="WT_A", "WT - Retrograde"="WT_R", "wdr-31;elmd-1;rpi-2 - Anterograde"="T_A",
