@@ -12,7 +12,8 @@
 ### Steps for generating boxplot from .csv file. 
 
 #### 1. Upload required packages and read .csv file. 
-```Phyton
+
+``` Java
 library(ggpubr)
 library(dplyr)
 library(tidyr)
@@ -22,13 +23,14 @@ library(colorspace)
 
 data<- read.csv("/Users/Desktop/Manuscripts/STAR_protocol_IFT/Code/frequency.csv", sep = ",", header = T)
 ```
+
 #### 2. Change column names
-```Phyton
+``` Java
 data = rename(data, c("WT - Anterograde"="WT_A", "WT - Retrograde"="WT_R", "wdr-31;elmd-1;rpi-2 - Anterograde"="T_A",
                       "wdr-31;elmd-1;rpi-2 - Retrograde"="T_R"))
 ```
 #### 3. Distrupt columns with column names using pivot_longer() function for obtaining longer dataset.
-```Phyton
+``` Java
 data_ <- data %>%
   pivot_longer(
     cols = c("WT - Anterograde","WT - Retrograde","wdr-31;elmd-1;rpi-2 - Anterograde",
@@ -37,15 +39,15 @@ data_ <- data %>%
     values_to = "Frequency",
     values_drop_na = TRUE,
   )
-  ```
+```
   #### 4. Reorder columns using levels paramater. 
-  ```Phyton
+ ``` Java
   data_$Names <- factor(data_$Names, levels = c("WT - Anterograde", "wdr-31;elmd-1;rpi-2 - Anterograde", 
                                               "WT - Retrograde", "wdr-31;elmd-1;rpi-2 - Retrograde"))
-  ```
+```
   
  ####  5. Generate boxplot using ggplot() and geom_boxplot() functions with detailed theme setting e.g. removing backgrounnd colour or border, giving names to x- and y- axis.
- ```Phyton
+ ``` Java
  data_ %>%
   ggplot(aes(x=Names, y=Frequency, fill= Names))+
   geom_boxplot(aes(color = Names,
@@ -64,11 +66,11 @@ data_ <- data %>%
   ylim(0,1.5)
 ```
 #### 6. Add statical analysis to graph between the reference group and samples using stat_compare_means() function.
-```Phyton
+ ``` Java
 stat_compare_means(comparisons = list(c("WT - Anterograde", "wdr-31;elmd-1;rpi-2 - Anterograde")),
                      label = "p.signif" )  +  
   stat_compare_means(label.y = 1.4, label.x.npc = "left") +
   stat_compare_means(comparisons = list(c("WT - Retrograde", "wdr-31;elmd-1;rpi-2 - Retrograde")),
                      label = "p.signif") +
   stat_compare_means(label.y = 1.3, label.x.npc = "center")
- ```
+```
