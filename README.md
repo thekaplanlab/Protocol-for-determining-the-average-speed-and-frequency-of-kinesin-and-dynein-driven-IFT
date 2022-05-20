@@ -8,6 +8,7 @@
 ![Rplot](https://user-images.githubusercontent.com/96948625/160301234-2512d8c5-5a32-488c-b19b-7a2bb0204a8e.png)
 
 >>doi: 
+>>TIF movies used for generaring the freqency graph are found at Zenodo, https://doi.org/10.5281/zenodo.6568214 .
 
 ### Steps for generating boxplot from .csv file. 
 
